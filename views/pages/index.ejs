@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head %>
+    </head>
+ 
+    <body>
+        <header>
+            <% include ../partials/header %>
+        </header>
+
+        <main>
+
+            <h1>Communication avec socket.io !</h1>
+            <section id="id"><%= quote._id %></section>
+            <section id="author"><%= quote.author %></section>
+            <section id="content"><%= quote.content %></section>
+            <section id="date"><%= quote.date %></section>
+            <span id="likes"><%= quote.likes %></span>
+            <span id="liked"><%= quote.liked %></span>
+            <span id="unlike" style="<%= quote.liked ? 'display:inline;' : 'display:none;' %>">&#10084;</span>
+            <span id="like" style="<%= quote.liked ? 'display:none;' : 'display:inline;' %>">&#10084;</span>
+            <span id="next">&#9654;</span>
+
+            <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+                // change URL
+                var socket = io.connect('http://localhost:8080');
+
+                $('#like').click(function () {
+                    socket.emit('like', $('#id').text());
+                    $('#like,#unlike').toggle();
+                });
+
+                $('#unlike').click(function () {
+                    socket.emit('unlike', $('#id').text());
+                    $('#like,#unlike').toggle();
+                });
+                
+                socket.on('modifierNombreLikes', function(likes) {
+                    $('#likes').text(likes);
+                });
+    
+                $('#next').click(function () {
+                    socket.emit('next', $('#id').text());
+                });
+
+                $('#previous').click(function () {
+                    socket.emit('previous', $('#id').text());
+                });
+
+                socket.on('displayNewQuote', function(newQuote) {
+                    $('#id').text(newQuote._id);
+                    $('#author').text(newQuote.author);
+                    $('#content').text(newQuote.content);
+                    $('#likes').text(newQuote.likes);
+                    $('#date').text(newQuote.date);
+
+                    if (newQuote.liked) {
+                        $('#unlike').show();                        
+                        $('#like').hide();                        
+                    } else {
+                        $('#unlike').hide();                        
+                        $('#like').show();                                                
+                    }
+                });
+    
+            </script>
+        </main>    
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+    </body>
+</html>

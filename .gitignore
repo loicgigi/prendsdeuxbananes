@@ -34,3 +34,13 @@ node_modules
 
 # variables d environnement du projet node
 .env
+
+# built files with grunt
+build/*.js
+
+# Gcloud docker files
+.dockerignore
+Dockerfile
+
+# Grunt
+Gruntfile.js
