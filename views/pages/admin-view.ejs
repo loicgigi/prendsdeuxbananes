@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/admin-head %>
+    </head>
+
+  <body>
+
+      <!-- menu -->
+    <div id="header">
+        <% include ../partials/admin-header %>
+    </div>
+
+
+    <div class="container">
+
+        <h3>Quote</h3>
+        
+        <div class="btn-group">
+          <a href="/admin/<%= quote._id %>/delete" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i><span> Delete quote</span></a>
+        </div>
+        <div class="media">
+          <div class="media-body">
+            <h4><%= quote.content %></h4>
+            <p><%= quote.author %></p>
+            <p><%= quote.date %></p>
+          </div>
+        </div>
+
+     </div> <!-- container -->
+  </body>
+</html>

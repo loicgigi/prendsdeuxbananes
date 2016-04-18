@@ -29,8 +29,11 @@ router.route('/quotes')
 
 	var myQuote = new QuoteModel({
 		author: req.body.author,
-		content: req.body.content
+		content: req.body.content, 
+		date: new Date(req.body.date),
 	});
+
+	console.log('Triying to insert quote : \n', myQuote);
 
 	// Save quote in MongoDB
 	myQuote.save(function(err) {

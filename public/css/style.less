@@ -1,0 +1,904 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/css?family=Pacifico);
+@import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+
+/*define LESS variables : */
+  .animation(@anim) {
+-webkit-animation : @anim;
+ -moz-animation-animation : @anim;
+  -ms-animation : @anim;
+  -o-animation : @anim;
+  animation : @anim;
+  
+
+  }
+
+  .animation-direction(@direction) {
+      -webkit-animation-direction: @direction;
+       -moz-animation-direction: @direction;
+      -ms-animation-direction: @direction;
+       -o-animation-direction: @direction;
+        animation-direction: @direction;
+
+  }
+
+  .animation-iteration-count(@count) {
+
+  -webkit-animation-iteration-count: @count;
+       -moz-animation-iteration-count: @count; 
+      -ms-animation-iteration-count: @count; 
+       -o-animation-iteration-count: @count; 
+        animation-iteration-count: @count;
+  }
+
+  .animation-fill-mode(@mode) {
+    -webkit-animation-fill-mode: @mode;
+         -moz-animation-fill-mode: @mode;
+      -ms-animation-fill-mode: @mode;
+       -o-animation-fill-mode: @mode;
+        animation-fill-mode: @mode;
+  }
+  
+.transition(@transition) {
+  -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -ms-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.filter(@filter) {
+
+          -webkit-filter: @filter;
+         -moz-filter: @filter;
+          -ms-filter: @filter;
+           -o-filter: @filter;
+              filter: @filter;
+}
+
+/*define transitions*/
+
+@-webkit-keyframes grayscale-anim {
+  from { -webkit-filter: grayscale(1); }
+  to   { -webkit-filter: grayscale(0); }
+}
+
+@-moz-keyframes grayscale-anim {
+  from { -moz-filter: grayscale(1); }
+  
+  to   { -moz-filter: grayscale(0); }
+}
+
+@-o-keyframes grayscale-anim {
+  from { -o-filter: grayscale(1); }
+  to   { -o-filter: grayscale(0); }
+}
+
+/* TODO : breaks the animation ?*/
+/*@keyframes grayscale-anim {
+  from { filter: grayscale(1); }
+  to   { filter: grayscale(0); }
+}*/
+
+@-webkit-keyframes slide-anim {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+
+@-moz-keyframes slide-anim {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+
+@-o-keyframes slide-anim {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+
+@keyframes slide-anim {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+
+
+/* animation played when user request the contact form */
+.modal-dialog .modal-content {
+  .animation(slide-anim 1s linear);
+
+}
+
+
+/* animation played when an element is ready (added to element via jQuery) */ 
+.grayscale-out {
+  .animation(grayscale-anim 2s ease);
+  .animation-direction(normal);
+  .animation-iteration-count(1);
+  .animation-fill-mode(forwards);
+}
+
+/* animation when player is ready to play (Used to animate big button "init-play") */
+.ready-to-play:hover  {
+  transform: scale(1.3,1.3);
+}
+.ready-to-play:hover, .ready-to-play {
+  .transition(transform .5s ease-in);
+}
+
+  /* init the page at grayscale */
+/*  #wrapper, #init-player {
+    .filter(grayscale(1));
+  }
+*/
+
+/* define colors*/
+#progresslabel, #quote-like:hover, #quote-next:hover, #quote-unlike, #track-playlist, #track-play-pause, #track-next, #quote-next, a:hover, .navbar-brand {
+                color: orangered;
+}
+
+#read #quote {
+    color: orangered;
+}
+
+/* TODO : colors on the track squre in playlist that is already playing*/
+/*#playlist .track.playing {
+      background-color: grey;
+}*/
+
+
+/*blabla button on header*/
+#quote-read-unread {
+  color:gray;
+  text-decoration: none;
+}
+
+/* class active toggled by javascript when clicked */
+#quote-read-unread.active {
+  color:orangered;
+}
+
+/*useless ?*/
+/*#progressbar::-webkit-progress-value{
+    background:orangered;
+}*/
+
+#init-player-triangle {
+  background-color: orangered;
+}
+
+#playlist .play-button:hover {
+  color:black;
+}
+            
+#quote-like, #quote-unlike:hover, #quote-next {
+    color: gray;
+}
+
+#progressbar {
+      color: #000;
+}
+
+#playlist .play-button {
+   color: orangered;
+}
+
+#playlist .track {
+      color: black;
+}
+
+
+.navbar-inverse #pages-links>li>a {
+  color: orangered;
+}
+
+.navbar-inverse>.active>a, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    color: orangered;
+}  
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+    color: orangered;
+
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  color: orangered;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: orangered;
+}
+
+/*define transparent elements*/
+ .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    background-color: transparent;
+  }
+
+/*toggled to content by javascript when display/hide the playlist*/
+.transparent {
+    background: rgba(0,0,0,0.5);
+}
+
+#playlist .play-button:hover, #read, .navbar-inverse, #progressbar {
+    background: rgba(0,0,0,0.5);
+  }
+
+/*define background*/
+#wrapper {
+/*  background:url('/images/prends-deux-bananes-disco-house-music-player.png') no-repeat center center;*/
+  background:url('/images/prends-deux-bananes-disco-house-music-player.jpg') no-repeat center center;
+  background-size:cover;
+}
+
+/*define pointer on clickable elements */
+#quote-read-unread, .player, #quote-unlike, #quote-like, #quote-next, #player-controls {
+  cursor: pointer;
+}
+
+#init-player-triangle {
+    cursor:crosshair;
+  }
+
+/*define fonts */
+#header {
+  font-family: "Pacifico", Helvetica, Arial, sans-serif;
+  
+}
+
+#content, #footer {
+    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+  }
+  
+
+/*define layers*/
+/*necessary so that the playlist stays below*/
+
+#header, #footer {
+  z-index: 1000;
+}
+
+/*big button play*/
+#play {
+    z-index: 1000;
+}
+
+/* needed to have the progress bar overlap the label*/
+#progresslabel { 
+  z-index: 5;
+}
+
+/* important to overlay the .track in playlist only on hover */
+#playlist .play-button {
+/*    margin: 15px;*/ /*important to NOT position margin in the col-xx-x div because it breaks the grid system */
+  z-index:5;
+}
+
+#playlist .track-metadata {
+    z-index:10;
+}
+
+#playlist .track-metadata:hover {
+  z-index:2; 
+}
+
+
+#playlist .play-button:hover {
+  z-index:11;
+}
+
+#contact, #login {
+  z-index:1000;
+}
+
+/*useless ?*/
+/*#progressbar {
+  position: absolute;
+  z-index:1;
+}*/
+
+
+html {
+  /* Ensure the html element always takes up the full height of the browser window */
+  min-height:100%;
+  height:100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height:100%;
+/*  background-color: transparent;*/
+}
+
+/* replace body !important */
+#wrapper {
+height:100%;
+
+}
+
+/* Set the fixed height of the footer and header necessary to have the footer fixed to bottom */
+#header{
+  height:70px;
+}
+      
+#footer{
+  height:59px;
+}
+
+#header, #footer {
+  position:relative;
+}
+
+
+
+/*custom wrapper to achieve 100% width*/
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*hidden div to perform vertical aligmnent*/
+.v-align {
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+/*disable selection for text (used for playlist and play label)*/
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+#content{
+  overflow-y: scroll;
+/*  overflow-x: scroll;*/
+    min-height:100%;
+/*    height:auto !important;*/
+    height:100%;
+    /* Negative indent header and footer by its height */
+    margin:-70px auto -59px;
+    /* Pad bottom by header and footer height */
+    padding:70px 0 59px;
+}
+
+
+/*hidden elements */
+
+/* never showed */
+#quote-id, iframe, .empty-track { display: none; } 
+
+/* displayed only if quote already liked */
+#quote-unlike {
+    display: none;
+}
+
+/* hidden by default on big screens and displayed via click on button. always hidden for small devices */
+#read {
+  display: none;
+}
+
+/* displayed on click on playlist button only */
+#playlist {
+    display: none;
+}
+  
+/* For large screen Devices  ONLY */ 
+@media only screen and (min-width : 768px) {
+  .navbar-brand {
+    display: none;
+  }
+}
+
+  /* For extra Small Devices, Phones ONLY */
+@media only screen and (max-width: 500px) {
+
+    /* playlist always displayed */
+/*    #playlist {
+        display: block;
+      
+    }*/
+
+    /* do not display the volume controller */
+    #volume-controller {
+      display: none;
+    }
+
+    /* do not display the big player button */
+    /*#play {
+      display:none;
+    }*/
+
+    #quote-read-unread-container {
+      display: none;
+    } 
+  }
+
+/*nav menu */
+.navbar {
+  margin-bottom: 0px;
+}
+
+@media only screen and (min-width : 768px) {
+
+
+        .navbar .navbar-collapse #followup li a {
+          padding-right : 5px ;
+          padding-left : 5px ;
+
+        }
+
+        #followup {
+         margin-right: 0px; 
+        }
+
+        .navbar {
+          border-radius: 0px;
+        font-size: 2rem;
+        border:0px;
+      /*  height:70px;*/
+      }
+
+        #pages-links li:hover,   #pages-links li:active {
+          border-bottom-color: orangered;
+          border-bottom-style: solid;
+          border-bottom-width: 4px;  
+          padding-bottom: 16px;  
+        }
+
+      #volumeslider {
+          width: 9rem;
+        }
+
+
+}
+
+#followup>ul>li, .navbar-form input {
+  display: inline-block;
+}
+/* when the nav isn't collapsed*/
+/* Large Devices, Wide Screens */
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width: 500px) {
+
+          .navbar-brand {
+            display: block;
+
+          }
+          
+          .nav>li {
+            padding: 10px;
+          }
+
+          .navbar-inverse #pages-links>li>a {
+            font-size: 20px;
+          }
+
+          #followup {        
+            border-top-style: inset;
+            border-top-width: thin;
+            /*margin: 7.5px 0px;*/
+          }
+          
+          #quote-read-unread-container {
+            border-bottom-style: inset;
+            border-bottom-width: thin;
+          border-bottom-color: gray;
+          }
+
+          #followup li {
+            display: inline-block;
+          }
+
+}
+
+#pages-links {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+/*DEFINE VOLUME SLIDER (HEADER)*/
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+ /* width: 100%;*/
+  background: transparent; /* Hides the slider so custom styles can be added */
+  border-color: transparent;
+  color: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  top: 0px;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+/*  -webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);*/
+/*  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;*/
+  background-image: url("/images/volumeslider.png");
+}
+  /*-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(51%,#89c3eb), color-stop(100%,#d5ebfb));*/
+
+#volumeslider {
+  height:0.2rem;
+    background-color: orangered;
+}
+
+
+/* define big button play */
+#play {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#play-container {
+    /*height: 100%;*/
+    vertical-align: middle; 
+    display: inline-block;
+        line-height: normal;
+    margin: 0 auto;
+}
+
+#init-player-triangle {
+  position: relative;
+  text-align: left;
+}
+#init-player-triangle:before,
+#init-player-triangle:after {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+}
+#init-player-triangle,
+#init-player-triangle:before,
+#init-player-triangle:after {
+  width:  10em;
+  height: 10em;
+  border-top-right-radius: 20%;
+}
+
+#init-player-triangle {
+  transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
+}
+#init-player-triangle:before {
+  transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+}
+#init-player-triangle:after {
+  transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+}
+
+/*Define player (footer)*/
+.player {
+  height:20px;
+}
+
+#player-controls div {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+
+}
+
+#progresslabel {
+/*  user-select: none;*/
+  text-overflow: ellipsis;
+  height: 100%; /* necessary so taht text-overflow works */
+  /*color: white;*/
+/*
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  */
+
+/*define width*/
+  width: 100%;
+  position: absolute; 
+  font-size: 1em;
+  display: block;
+  overflow: hidden;
+  text-align: center;    
+}
+
+#progressbar {
+
+  /*opacity: 0.5;*/
+
+/*  mix-blend-mode: overlay;*/
+  height: 100%;
+  width: 100%;
+  
+  transition: width .1s linear;
+    -webkit-appearance: none;
+   appearance: none;
+    border: none; /* Needed for Firefox */
+    -webkit-appearance: none; /* Needed for WebKit/Blink */
+}
+
+#progressbar::-moz-progress-bar { 
+    background: #000;
+}
+
+#progressbar::-webkit-progress-value {
+    background: #000;
+}
+#progressbar::-webkit-progress-bar {
+    background: transparent;
+
+}
+
+#track-playlist, #track-play-pause, #track-next {
+/*  font-family: heydings;*/
+  /*font-size: 2em;
+*/}
+
+#track-playlist {
+    float: left;
+}
+
+#track-next {
+    float: right;
+}
+
+#player-controls {
+/*  position: relative;*/
+  text-align: center;
+  /*width: 100%;*/
+}
+
+
+/*define quotes*/
+#read {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px; 
+    line-height: 400px;
+    /* color: orangered; */
+    vertical-align: middle;
+    margin: 0 auto 0 auto;
+}
+
+#read #quote {
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#read #quote p::before {
+    content: '\201C\00A0';
+    line-height: 13px;
+    font-size: 3vw;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#read #quote p {
+  font-size: 2.2vw;
+}
+
+
+#read #quote p::after {
+    content: '\00A0\201E';
+    line-height: 13px;
+    font-size: 3vw;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+/* design playlist */
+
+
+/*#playlist {
+  margin: 20px;
+}*/
+
+#playlist>.row>div {
+/*  padding:0;*/
+/*  height:150px;*/
+/*  width:150px;
+  max-width: 150px;*/
+/*  max-height: 150px;*/
+  overflow:hidden;
+
+
+}
+
+#playlist .track-title {
+  font-weight: bold;
+}
+
+#playlist .play-button {
+/*    margin: 15px;*/ /*important to NOT position margin in the col-xx-x div because it breaks the grid system */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  text-align:center;
+  line-height:200px; /* important to center vertically the play button */
+}
+#playlist .track {
+    background-color:orangered;
+    margin: 6% auto;
+    /*margin: 0 auto;*/
+  position:relative;  
+    text-align:left;
+  width:200px;
+/*      margin: 15px;*/ /*important to NOT position margin in the col-xx-x div because it breaks the grid system */
+  height:200px;
+    /*padding:10px;*/
+}
+
+#playlist .track-metadata {
+  position: absolute;
+  padding: 15px;
+  left:0;
+  top:0;
+}
+
+  
+/*scrollbar*/
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 0px;
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px
+}
+
+::-webkit-scrollbar-track {
+    background: #bdbdbd
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-color: rgba(0,0,0,0.2);
+    -webkit-border-radius: 0px
+}
+
+::-webkit-scrollbar-thumb:vertical:hover,::-webkit-scrollbar-thumb:horizontal:hover {
+    background: #ED3F1C
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: rgba(0,0,0,0.2);
+    -webkit-border-radius: 0px
+}
+
+/*body {
+    font: 16px/25px museo-sans-rounded,Helvetica;
+    font-weight: 100;
+    -webkit-tap-highlight-color: #ffff9e
+}
+
+body {
+    width: 100%
+}*/
+
+body scrollbar {
+    -moz-appearance: none !important;
+    background: red !important
+}
+
+body scrollbar thumb[orient="vertical"] {
+    background: url() center no-repeat !important
+}
+
+body scrollbar thumb[orient="horizontal"] {
+    background: url() center no-repeat !important
+}
+
+body scrollbarbutton[type="increment"] {
+    -moz-appearance: none !important;
+    background: url() center no-repeat !important
+}
+
+/* design contact window */
+
+#contact, #login {
+  display: none;
+/*  position: fixed;*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Display the contact modal when targeted */
+#contact:target, #login:target {
+  display: table;
+}
+
+#read:target {
+  display:block;
+}
+
+#playlist:target {
+  display:block;
+}
+
+
+
+/* contact modal box */
+.modal-dialog {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
+/* contact modal content */
+.modal-dialog .modal-content {
+  margin: auto;
+  background-color: #f3f3f3;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 1px #777 solid;
+  text-align: justify;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+/* button used to close the contact modal */
+.modal-close {
+  text-decoration: none;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-close-container {
+  padding: 2px 16px;
+}
